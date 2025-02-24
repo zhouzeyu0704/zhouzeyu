@@ -6,19 +6,7 @@ window.onload = function() {
     }, 2000);
 };
 
-// 点击按钮后显示弹窗
-function showMessage() {
-    // 隐藏按钮
-    const button = document.querySelector("button");
-    button.style.display = "none";
-
-    // 显示弹窗
-    const popup = document.getElementById("popup");
-    popup.style.display = "flex";
-}
-
-// 关闭弹窗
-function closePopup() {
-    const popup = document.getElementById("popup");
-    popup.style.display = "none";
+// 跳转到新的页面
+function redirectToMessagePage() {
+    window.location.href = "message.html";  // 跳转到 message.html 页面
 }
