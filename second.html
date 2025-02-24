@@ -48,6 +48,8 @@
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
         }
     </style>
@@ -98,6 +100,40 @@
             }
             
             animate();
+
+            // Ripple effect
+            const rippleCanvas = document.createElement('canvas');
+            const rippleCtx = rippleCanvas.getContext('2d');
+            document.body.prepend(rippleCanvas);
+
+            function resizeRipple() {
+                rippleCanvas.width = window.innerWidth;
+                rippleCanvas.height = window.innerHeight;
+            }
+
+            resizeRipple();
+            window.addEventListener('resize', resizeRipple);
+
+            function drawRipple() {
+                rippleCtx.clearRect(0, 0, rippleCanvas.width, rippleCanvas.height);
+
+                const gradient = rippleCtx.createRadialGradient(
+                    rippleCanvas.width / 2, rippleCanvas.height / 2, 0,
+                    rippleCanvas.width / 2, rippleCanvas.height / 2, rippleCanvas.width / 2
+                );
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
+                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+                rippleCtx.fillStyle = gradient;
+
+                rippleCtx.beginPath();
+                rippleCtx.arc(rippleCanvas.width / 2, rippleCanvas.height / 2, rippleCanvas.width / 2, 0, Math.PI * 2);
+                rippleCtx.fill();
+
+                requestAnimationFrame(drawRipple);
+            }
+
+            drawRipple();
         })();
     </script>
 </body>
