@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Zzy的主页</title>
+    <style>
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-purple: #8a2be2;
+            --safe-area-top: max(env(safe-area-inset-top), 20px);
+            --safe-area-bottom: max(env(safe-area-inset-bottom), 20px);
+        }
+
+        html {
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0;
+            min-height: calc(100vh - var(--safe-area-top) - var(--safe-area-bottom));
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 
+                        "HarmonyOS Sans", "MiSans", 
+                        "Microsoft YaHei", sans-serif;
+        }
+
+        .title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: #fff;
+            text-shadow: 0 0 12px var(--neon-pink);
+            margin: 15px 0;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .title span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: reveal 0.5s forwards;
+        }
+
+        @keyframes reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 15px var(--neon-pink);
+            min-width: 140px;
+            min-height: 44px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: btnGlow 3s infinite linear;
+        }
+
+        @keyframes btnGlow {
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">
+        <span style="animation-delay: 0.1s">欢</span>
+        <span style="animation-delay: 0.2s">迎</span>
+        <span style="animation-delay: 0.3s">来</span>
+        <span style="animation-delay: 0.4s">到</span>
+        <span style="animation-delay: 0.5s">z</span>
+        <span style="animation-delay: 0.6s">z</span>
+        <span style="animation-delay: 0.7s">y</span>
+        <span style="animation-delay: 0.8s">的</span>
+        <span style="animation-delay: 0.9s">网</span>
+        <span style="animation-delay: 1.0s">页</span>
+    </h1>
+    <button class="btn" id="transitionBtn">进入新次元</button>
+
+    <script>
+        (function() {
+            const btn = document.getElementById('transitionBtn');
+            
+            // 统一事件处理
+            function handleInteraction(e) {
+                e.preventDefault();
+                window.location.href = 'second.html';
+            }
+
+            // 鼠标事件
+            btn.addEventListener('click', handleInteraction);
+            
+            // 触摸事件
+            btn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.classList.add('active');
+            }, { passive: false });
+
+            btn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                this.classList.remove('active');
+                handleInteraction(e);
+            }, { passive: false });
+        })();
+    </script>
+</body>
+</html>
