@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张浩博最帅</title>
+    <style>
+        html {
+            font-size: 16px;
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #8a2be2;
+            background: linear-gradient(45deg, #ff00ff, #8a2be2);
+            background-size: 400% 400%;
+            -webkit-animation: gradientBG 10s ease infinite;
+                    animation: gradientBG 10s ease infinite;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+        }
 
+        @-webkit-keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .text {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 0 20px #ff00ff;
+            padding: 0 1rem;
+            text-align: center;
+            -webkit-animation: zoomIn 1s ease forwards;
+                    animation: zoomIn 1s ease forwards;
+        }
+
+        @-webkit-keyframes zoomIn {
+            from {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text">张浩博最帅！</h1>
+</body>
+</html>
