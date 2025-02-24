@@ -8,9 +8,7 @@
         :root {
             --transition-time: 0.8s;
         }
-
         /* 基础样式保持不变... */
-
         /* 新增过渡遮罩 */
         .transition-mask {
             position: fixed;
@@ -25,7 +23,6 @@
             clip-path: circle(0% at 50% 50%);
             transition: clip-path var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         /* 粒子效果 */
         .particles {
             position: fixed;
@@ -36,7 +33,6 @@
             opacity: 0;
             pointer-events: none;
         }
-
         @keyframes particleFly {
             0% {
                 transform: translate(0, 0);
@@ -47,7 +43,6 @@
                 opacity: 0;
             }
         }
-
         /* 移动端优化 */
         @media (max-width: 768px) {
             .btn {
@@ -58,10 +53,8 @@
 </head>
 <body>
     <div class="transition-mask"></div>
-    
     <h1 class="title">...</h1>
     <button class="btn" onclick="startTransition()">进入新次元</button>
-
     <script>
         function createParticles(x, y) {
             for(let i = 0; i < 30; i++) {
@@ -78,22 +71,17 @@
                 setTimeout(() => particle.remove(), 1000);
             }
         }
-
         function startTransition() {
             const mask = document.querySelector('.transition-mask');
             const btn = event.currentTarget.getBoundingClientRect();
-            
             // 创建粒子
             createParticles(btn.left + btn.width/2, btn.top + btn.height/2);
-            
             // 启动过渡动画
             mask.style.clipPath = 'circle(0% at '+ (btn.left + btn.width/2) +'px '+ (btn.top + btn.height/2) +'px)';
             mask.style.opacity = '1';
-            
             setTimeout(() => {
                 mask.style.clipPath = 'circle(150% at '+ (btn.left + btn.width/2) +'px '+ (btn.top + btn.height/2) +'px)';
             }, 10);
-
             setTimeout(() => {
                 window.location.href = 'second.html';
             }, var(--transition-time) * 1000);
