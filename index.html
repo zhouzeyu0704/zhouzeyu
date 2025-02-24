@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zzy的主页</title>
+    <style>
+        /* 基础重置 */
+        html {
+            font-size: 16px;
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: #8a2be2; /* 旧浏览器回退色 */
+            background: linear-gradient(45deg, #ff00ff, #8a2be2);
+            background-size: 400% 400%;
+            -webkit-animation: gradientBG 10s ease infinite;
+                    animation: gradientBG 10s ease infinite;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+        }
+
+        @-webkit-keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .title {
+            font-size: 3rem;
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 0 15px #ff00ff,
+                         0 0 30px #ff00ff;
+            margin: 1rem;
+            padding: 0 1rem;
+        }
+
+        .title span {
+            display: inline-block;
+            opacity: 0;
+            -webkit-transform: translateY(20px);
+                    transform: translateY(20px);
+            -webkit-animation: reveal 0.5s forwards;
+                    animation: reveal 0.5s forwards;
+        }
+
+        @-webkit-keyframes reveal {
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+            }
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                        transform: translateY(0);
+            }
+        }
+
+        .btn {
+            padding: 1em 2em;
+            font-size: 1.2rem;
+            background: #8a2be2;
+            background: linear-gradient(135deg, #ff00ff 30%, #8a2be2 70%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            -webkit-box-shadow: 0 0 15px #ff00ff;
+                    box-shadow: 0 0 15px #ff00ff;
+            min-width: 160px;
+            min-height: 44px; /* 符合WCAG触摸目标标准 */
+        }
+
+        .btn:hover,
+        .btn:active {
+            -webkit-transform: scale(1.05);
+                    transform: scale(1.05);
+            -webkit-box-shadow: 0 0 25px #ff00ff;
+                    box-shadow: 0 0 25px #ff00ff;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+                margin: 0.5rem;
+            }
+            
+            .btn {
+                font-size: 1rem;
+                padding: 0.8em 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">
+        <span style="animation-delay: 0.1s">欢</span>
+        <span style="animation-delay: 0.2s">迎</span>
+        <span style="animation-delay: 0.3s">来</span>
+        <span style="animation-delay: 0.4s">到</span>
+        <span style="animation-delay: 0.5s">z</span>
+        <span style="animation-delay: 0.6s">z</span>
+        <span style="animation-delay: 0.7s">y</span>
+        <span style="animation-delay: 0.8s">的</span>
+        <span style="animation-delay: 0.9s">网</span>
+        <span style="animation-delay: 1.0s">页</span>
+    </h1>
+    <button class="btn" onclick="window.location.href='second.html'">进入新次元</button>
+</body>
+</html>
