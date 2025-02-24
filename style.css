@@ -4,22 +4,44 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    transition: background-color 0.5s ease-in-out; /* 背景颜色渐变动画 */
+    transition: background-color 0.5s ease-in-out;
 }
 
-header {
+/* 🔹 过场动画样式 */
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
     background-color: #007bff;
     color: white;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 999;
+    animation: fadeOut 2s ease-in-out forwards;
 }
 
+/* 2秒后渐隐 */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* 隐藏正式内容，2秒后显示 */
+#content {
+    display: none;
+}
+
+/* 🔹 按钮样式 */
 button {
     padding: 12px 24px;
     font-size: 18px;
-    background-color: #ff5722;  /* 橙色按钮 */
+    background-color: #ff5722;
     color: white;
     border: none;
-    border-radius: 10px;  /* 圆角 */
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
     transition: all 0.3s ease-in-out;
@@ -27,7 +49,7 @@ button {
 
 button:hover {
     background-color: #e64a19;
-    transform: scale(1.05); /* 悬停时放大 */
+    transform: scale(1.05);
 }
 
 #message-container {
