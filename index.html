@@ -13,13 +13,13 @@
         <h1 id="welcome-text"></h1>
     </div>
 
-    <!-- 页面离开时的过渡动画 -->
+    <!-- 页面过渡动画 -->
     <div id="transition-screen"></div>
 
-    <!-- 科技感背景 -->
+    <!-- 科技感浪漫背景 -->
     <canvas id="background"></canvas>
 
-    <!-- 主内容 -->
+    <!-- 主要内容 -->
     <div id="content">
         <div class="container">
             <header>
@@ -28,9 +28,11 @@
 
             <p>点击按钮，体验更多惊喜！</p>
 
-            <button id="action-btn" onclick="startPageTransition()">点击我</button>
+            <button id="action-btn" onclick="explodeButton()">🌟 点击体验 🌟</button>
         </div>
     </div>
+
+    <canvas id="particles-canvas"></canvas>
 
     <script src="script.js"></script>
 </body>
