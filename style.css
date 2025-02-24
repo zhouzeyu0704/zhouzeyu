@@ -1,16 +1,27 @@
-/* 🔹 设置全局样式，使用渐变背景 */
+/* 🔹 全局样式 */
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    height: 100vh;
+    background: linear-gradient(45deg, #1e3c72, #2a5298); /* 初始背景渐变 */
+    background-size: 400% 400%; /* 背景的渐变范围 */
+    animation: gradientBackground 15s ease infinite; /* 渐变背景动画 */
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     overflow: hidden;
+}
+
+/* 🔹 背景渐变动画 */
+@keyframes gradientBackground {
+    0% { background: linear-gradient(45deg, #1e3c72, #2a5298); }
+    25% { background: linear-gradient(45deg, #6a11cb, #2575fc); }
+    50% { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
+    75% { background: linear-gradient(45deg, #ff4b2b, #ffeb3b); }
+    100% { background: linear-gradient(45deg, #1e3c72, #2a5298); }
 }
 
 /* 🔹 过场动画 */
@@ -18,7 +29,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: rgba(0, 0, 0, 0.8); /* 更加深色的背景 */
     color: white;
     display: flex;
     justify-content: center;
@@ -38,37 +49,32 @@ body {
 /* 🔹 主容器（玻璃拟态效果） */
 .container {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px); /* 更强的高斯模糊 */
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     width: 400px;
     transition: transform 0.3s ease-in-out;
+    animation: slideIn 1s ease-out; /* 进入时动画 */
 }
 
-/* 进入时的动画 */
-#content {
-    display: none;
-    animation: fadeIn 1s ease-in-out forwards;
-}
-
-/* 进入时淡入 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* 进入时动画：从上滑入 */
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* 🔹 标题美化 */
 h1 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-/* 🔹 按钮样式（高级立体感） */
+/* 🔹 按钮样式 */
 button {
-    padding: 12px 24px;
-    font-size: 18px;
+    padding: 14px 28px;
+    font-size: 20px;
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
     border: none;
@@ -76,14 +82,14 @@ button {
     cursor: pointer;
     margin-top: 20px;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(255, 75, 43, 0.5);
+    box-shadow: 0 4px 12px rgba(255, 75, 43, 0.5);
 }
 
 /* 按钮悬停效果 */
 button:hover {
     transform: scale(1.05);
     background: linear-gradient(45deg, #ff4b2b, #ff416c);
-    box-shadow: 0 6px 12px rgba(255, 75, 43, 0.7);
+    box-shadow: 0 6px 14px rgba(255, 75, 43, 0.7);
 }
 
 /* 按钮点击时 */
