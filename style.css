@@ -105,27 +105,48 @@ button:active {
     margin-top: 20px;
 }
 
-/* 🔹 让“张浩博最帅”全屏显示 */
-#full-screen-message {
+/* 🔹 弹窗样式 */
+.popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none; /* 初始时不显示 */
     justify-content: center;
     align-items: center;
-    font-size: 5vw;
-    font-weight: bold;
-    color: #ffeb3b;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.7); /* 半透明的背景 */
     z-index: 1000;
-    opacity: 0;
-    animation: fadeInText 1s ease-out forwards;
 }
 
-/* 文字淡入动画 */
-@keyframes fadeInText {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.popup-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+.popup h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff416c;
+}
+
+.popup button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #ff416c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+/* 按钮悬停效果 */
+.popup button:hover {
+    background: #ff4b2b;
 }
