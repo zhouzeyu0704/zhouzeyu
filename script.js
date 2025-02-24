@@ -1,64 +1,29 @@
-// 过场动画后显示内容
+// 逐字显示旋转动画
 window.onload = function() {
+    let welcomeText = "欢迎来到周泽宇做的网页";
+    let welcomeContainer = document.getElementById("welcome-text");
+    
+    // 把文字拆成单个字母
+    welcomeContainer.innerHTML = "";
+    for (let i = 0; i < welcomeText.length; i++) {
+        let span = document.createElement("span");
+        span.textContent = welcomeText[i];
+        span.style.animationDelay = `${i * 0.2}s`; // 依次延迟出现
+        welcomeContainer.appendChild(span);
+    }
+
+    // 2秒后显示主内容
     setTimeout(() => {
         document.getElementById("loading-screen").style.display = "none";
         document.getElementById("content").style.display = "block";
-    }, 2000);
+    }, 3000);
 };
 
-// 按钮点击后跳转到新页面
-function redirectToMessagePage() {
-    window.location.href = "message.html";
+// 点击按钮后跳转
+function startPageTransition() {
+    let transitionScreen = document.getElementById("transition-screen");
+    transitionScreen.classList.add("active");
+    setTimeout(() => {
+        window.location.href = "message.html"; // 跳转到新页面
+    }, 1000);
 }
-
-// 背景动态粒子效果
-const canvas = document.getElementById("background");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
-    }
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.02;
-    }
-    draw() {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function init() {
-    particles = [];
-    for (let i = 0; i < 100; i++) {
-        particles.push(new Particle());
-    }
-}
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((particle, index) => {
-        particle.update();
-        particle.draw();
-        if (particle.size <= 0.2) {
-            particles.splice(index, 1);
-            particles.push(new Particle());
-        }
-    });
-    requestAnimationFrame(animate);
-}
-
-init();
-animate();
