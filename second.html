@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>张浩博最帅</title>
     <style>
@@ -20,9 +22,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 
-                        "HarmonyOS Sans", "MiSans",
-                        "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "HarmonyOS Sans", "MiSans", "Microsoft YaHei", sans-serif;
             overflow: hidden;
         }
 
@@ -37,7 +37,7 @@
         }
 
         @keyframes textAppear {
-            to { 
+            to {
                 opacity: 1;
                 transform: translateY(0);
                 filter: drop-shadow(0 0 10px var(--neon-pink));
@@ -54,26 +54,29 @@
         }
     </style>
 </head>
+
 <body>
     <h1 class="text">张浩博最帅！</h1>
-    
+
     <script>
-        (function() {
-            // 高性能粒子背景
+        (function () {
+            // High-performance particle background
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             document.body.prepend(canvas);
-            
+
             function resize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
-            
-            // 根据设备性能调整参数
+
+            // Adjust parameters based on device performance
             const isHighPerf = /(iPhone OS 1[3-9]|Android (1[0-9]|12)|Harmony)/.test(navigator.userAgent);
             const PARTICLE_COUNT = isHighPerf ? 300 : 100;
 
-            let particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+            let particles = Array.from({
+                length: PARTICLE_COUNT
+            }, () => ({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 2 + 1,
@@ -85,20 +88,20 @@
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
+
                 particles.forEach(p => {
                     p.y += p.speed;
-                    if(p.y > canvas.height) p.y = -10;
-                    
+                    if (p.y > canvas.height) p.y = -10;
+
                     ctx.beginPath();
                     ctx.fillStyle = `rgba(255,255,255,${p.size/3})`;
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     ctx.fill();
                 });
-                
+
                 requestAnimationFrame(animate);
             }
-            
+
             animate();
 
             // Ripple effect
@@ -137,4 +140,5 @@
         })();
     </script>
 </body>
+
 </html>
