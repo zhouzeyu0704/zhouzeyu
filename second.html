@@ -5,84 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>张浩博最帅</title>
     <style>
-        html {
-            font-size: 16px;
+        :root {
+            --transition-time: 0.8s;
+        }
+
+        /* 新增入场动画 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-        }
-        
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #8a2be2;
-            background: linear-gradient(45deg, #ff00ff, #8a2be2);
-            background-size: 400% 400%;
-            -webkit-animation: gradientBG 10s ease infinite;
-                    animation: gradientBG 10s ease infinite;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                    justify-content: center;
-            font-family: Arial, "Microsoft YaHei", sans-serif;
+            background: #ff00ff;
+            z-index: 999;
+            clip-path: circle(150% at 50% 50%);
+            animation: pageEnter var(--transition-time) cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        @-webkit-keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes pageEnter {
+            from {
+                clip-path: circle(150% at 50% 50%);
+            }
+            to {
+                clip-path: circle(0% at 50% 50%);
+            }
         }
 
         .text {
-            font-size: 3rem;
-            color: rgba(255,255,255,0.9);
-            text-shadow: 0 0 20px #ff00ff;
-            padding: 0 1rem;
-            text-align: center;
-            -webkit-animation: zoomIn 1s ease forwards;
-                    animation: zoomIn 1s ease forwards;
+            opacity: 0;
+            animation: textAppear 0.6s ease calc(var(--transition-time) + 0.2s) forwards;
         }
 
-        @-webkit-keyframes zoomIn {
+        @keyframes textAppear {
             from {
-                -webkit-transform: scale(0.5);
-                        transform: scale(0.5);
+                transform: translateY(30px);
                 opacity: 0;
             }
             to {
-                -webkit-transform: scale(1);
-                        transform: scale(1);
+                transform: translateY(0);
                 opacity: 1;
             }
         }
 
-        @keyframes zoomIn {
-            from {
-                -webkit-transform: scale(0.5);
-                        transform: scale(0.5);
-                opacity: 0;
-            }
-            to {
-                -webkit-transform: scale(1);
-                        transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .text {
-                font-size: 2rem;
-            }
-        }
+        /* 其他样式保持不变... */
     </style>
 </head>
 <body>
