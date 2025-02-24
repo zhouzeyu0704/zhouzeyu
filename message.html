@@ -4,25 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>张浩博最帅</title>
-    <link rel="stylesheet" href="message-style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 进入页面的过渡动画 -->
-    <div id="loading-screen">
-        <h1>加载中...</h1>
-    </div>
+    <!-- 过渡动画 -->
+    <div id="transition-screen"></div>
 
+    <!-- 科技感浪漫背景 -->
+    <canvas id="background"></canvas>
+
+    <!-- 内容 -->
     <div class="message-container">
-        <h1 class="glitch-text">张浩博最帅！</h1>
+        <h1 class="animated-text">张浩博最帅</h1>
     </div>
 
-    <script>
-        window.onload = function() {
-            setTimeout(() => {
-                document.getElementById("loading-screen").style.display = "none";
-            }, 1000);
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
