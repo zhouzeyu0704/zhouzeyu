@@ -1,152 +1,78 @@
-/* 🔹 全局样式 */
-body {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
+/* 全局样式 */
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
-    background: linear-gradient(45deg, #1e3c72, #2a5298); /* 初始背景渐变 */
-    background-size: 400% 400%; /* 背景的渐变范围 */
-    animation: gradientBackground 15s ease infinite; /* 渐变背景动画 */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* 🔹 背景渐变动画 */
-@keyframes gradientBackground {
-    0% { background: linear-gradient(45deg, #1e3c72, #2a5298); }
-    25% { background: linear-gradient(45deg, #6a11cb, #2575fc); }
-    50% { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
-    75% { background: linear-gradient(45deg, #ff4b2b, #ffeb3b); }
-    100% { background: linear-gradient(45deg, #1e3c72, #2a5298); }
-}
-
-/* 🔹 过场动画 */
-#loading-screen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8); /* 更加深色的背景 */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    z-index: 999;
-    animation: fadeOut 2s ease-in-out forwards;
-}
-
-/* 过场动画：2秒后渐隐 */
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
-}
-
-/* 🔹 主容器（玻璃拟态效果） */
-.container {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px); /* 更强的高斯模糊 */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 400px;
-    transition: transform 0.3s ease-in-out;
-    animation: slideIn 1s ease-out; /* 进入时动画 */
-}
-
-/* 进入时动画：从上滑入 */
-@keyframes slideIn {
-    0% { opacity: 0; transform: translateY(-30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* 🔹 标题美化 */
-h1 {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* 🔹 按钮样式 */
-button {
-    padding: 14px 28px;
-    font-size: 20px;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 12px rgba(255, 75, 43, 0.5);
-}
-
-/* 按钮悬停效果 */
-button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #ff4b2b, #ff416c);
-    box-shadow: 0 6px 14px rgba(255, 75, 43, 0.7);
-}
-
-/* 按钮点击时 */
-button:active {
-    transform: scale(0.95);
-}
-
-/* 🔹 显示信息的样式 */
-#message-container {
-    font-size: 40px;
-    font-weight: bold;
-    color: #ffeb3b;
-    margin-top: 20px;
-}
-
-/* 🔹 弹窗样式 */
-.popup {
+/* 背景动画 */
+canvas#background {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* 过场动画 */
+#loading-screen {
+    position: fixed;
     width: 100%;
-    height: 100%;
-    display: none; /* 初始时不显示 */
+    height: 100vh;
+    background: #1e1e1e;
+    color: white;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7); /* 半透明的背景 */
-    z-index: 1000;
+    font-size: 2em;
+    z-index: 999;
+    animation: fadeOut 2s ease-in-out 2s forwards;
 }
 
-.popup-content {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 50px;
-    border-radius: 15px;
+/* 主要内容 */
+#content {
+    display: none;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 400px;
-}
-
-.popup h2 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ff416c;
-}
-
-.popup button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background: #ff416c;
+    padding-top: 20vh;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s ease;
 }
 
-/* 按钮悬停效果 */
-.popup button:hover {
-    background: #ff4b2b;
+/* 按钮美化 */
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(255, 65, 108, 0.6);
+}
+
+/* 适配移动端 */
+@media (max-width: 768px) {
+    #content {
+        padding-top: 30vh;
+    }
+    
+    button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
+}
+
+/* 过场动画消失 */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
