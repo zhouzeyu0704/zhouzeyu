@@ -99,8 +99,33 @@ button:active {
 
 /* 🔹 显示信息的样式 */
 #message-container {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     color: #ffeb3b;
     margin-top: 20px;
+}
+
+/* 🔹 让“张浩博最帅”全屏显示 */
+#full-screen-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    font-weight: bold;
+    color: #ffeb3b;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeInText 1s ease-out forwards;
+}
+
+/* 文字淡入动画 */
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
