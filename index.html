@@ -22,8 +22,7 @@
             margin: 0;
             padding: var(--safe-area-top) 0 var(--safe-area-bottom) 0;
             min-height: calc(100vh - var(--safe-area-top) - var(--safe-area-bottom));
-            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
-            background-attachment: fixed;
+            background: #000;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -62,12 +61,20 @@
             border-radius: 30px;
             color: white;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-position 1s;
             box-shadow: 0 0 15px var(--neon-pink);
             min-width: 140px;
             min-height: 44px;
             position: relative;
             overflow: hidden;
+            background-size: 200% 200%;
+            animation: gradient-animation 3s infinite linear;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .btn::before {
@@ -142,7 +149,7 @@
                 handleInteraction(e);
             }, { passive: false });
 
-            // Ripple effect
+            // Dynamic background effect
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             document.body.prepend(canvas);
@@ -155,26 +162,42 @@
             resize();
             window.addEventListener('resize', resize);
 
-            function drawRipple() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let particles = [];
 
-                const gradient = ctx.createRadialGradient(
-                    canvas.width / 2, canvas.height / 2, 0,
-                    canvas.width / 2, canvas.height / 2, canvas.width / 2
-                );
-                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
-                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-                ctx.fillStyle = gradient;
-
-                ctx.beginPath();
-                ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, Math.PI * 2);
-                ctx.fill();
-
-                requestAnimationFrame(drawRipple);
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < 100; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        radius: Math.random() * 3 + 1,
+                        dx: (Math.random() - 0.5) * 2,
+                        dy: (Math.random() - 0.5) * 2
+                    });
+                }
             }
 
-            drawRipple();
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+                    ctx.fill();
+
+                    p.x += p.dx;
+                    p.y += p.dy;
+
+                    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+                });
+
+                requestAnimationFrame(drawParticles);
+            }
+
+            createParticles();
+            drawParticles();
         })();
     </script>
 </body>
