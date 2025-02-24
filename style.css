@@ -1,18 +1,24 @@
+/* 🔹 设置全局样式，使用渐变背景 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    transition: background-color 0.5s ease-in-out;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* 🔹 过场动画样式 */
+/* 🔹 过场动画 */
 #loading-screen {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: #007bff;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
     display: flex;
     justify-content: center;
@@ -23,38 +29,72 @@ body {
     animation: fadeOut 2s ease-in-out forwards;
 }
 
-/* 2秒后渐隐 */
+/* 过场动画：2秒后渐隐 */
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; visibility: hidden; }
 }
 
-/* 隐藏正式内容，2秒后显示 */
-#content {
-    display: none;
+/* 🔹 主容器（玻璃拟态效果） */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* 🔹 按钮样式 */
+/* 进入时的动画 */
+#content {
+    display: none;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* 进入时淡入 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔹 标题美化 */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 🔹 按钮样式（高级立体感） */
 button {
     padding: 12px 24px;
     font-size: 18px;
-    background-color: #ff5722;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     cursor: pointer;
     margin-top: 20px;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(255, 75, 43, 0.5);
 }
 
+/* 按钮悬停效果 */
 button:hover {
-    background-color: #e64a19;
     transform: scale(1.05);
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    box-shadow: 0 6px 12px rgba(255, 75, 43, 0.7);
 }
 
+/* 按钮点击时 */
+button:active {
+    transform: scale(0.95);
+}
+
+/* 🔹 显示信息的样式 */
 #message-container {
     font-size: 24px;
     font-weight: bold;
-    color: #d32f2f;
+    color: #ffeb3b;
     margin-top: 20px;
 }
