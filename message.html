@@ -8,9 +8,21 @@
 </head>
 <body>
 
-    <div class="message-container">
-        <h1>张浩博最帅！</h1>
+    <!-- 进入页面的过渡动画 -->
+    <div id="loading-screen">
+        <h1>加载中...</h1>
     </div>
 
+    <div class="message-container">
+        <h1 class="glitch-text">张浩博最帅！</h1>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById("loading-screen").style.display = "none";
+            }, 1000);
+        };
+    </script>
 </body>
 </html>
