@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>周泽宇的网页</title>
+    <title>周泽宇的科技网页</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 过场动画 -->
+    <!-- 进入网页的过场动画 -->
     <div id="loading-screen">
-        <h1>欢迎来到周泽宇做的网页</h1>
+        <h1 id="welcome-text"></h1>
     </div>
 
-    <!-- 背景动画 -->
+    <!-- 页面离开时的过渡动画 -->
+    <div id="transition-screen"></div>
+
+    <!-- 科技感背景 -->
     <canvas id="background"></canvas>
 
     <!-- 主内容 -->
     <div id="content">
         <div class="container">
             <header>
-                <h1>欢迎来到我的网页</h1>
+                <h1>欢迎来到我的科技网页</h1>
             </header>
 
-            <p>点击按钮，看看会发生什么！</p>
+            <p>点击按钮，体验更多惊喜！</p>
 
-            <!-- 优化按钮动画 -->
-            <button id="action-btn" onclick="redirectToMessagePage()">点击我</button>
-
+            <button id="action-btn" onclick="startPageTransition()">点击我</button>
         </div>
     </div>
 
